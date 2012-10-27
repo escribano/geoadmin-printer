@@ -1,0 +1,22 @@
+<!doctype html>
+<title>Flaskr</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+<div class=page>
+  <h1>Flaskr</h1>
+  <div class=metanav>
+
+  
+<fieldset>
+ <legend> Printing GeoAdmin: </legend>
+  <form action="/print" method=get>
+ <label for="oui" class="inline">url:</label>
+     
+      <input type=text name=url size=500  value="http://s.geo.admin.ch/27498582">
+      <input type=submit value=Print>
+    </fieldset>
+       
+  </form>
+  
+</div>
+
+
