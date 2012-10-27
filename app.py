@@ -5,6 +5,7 @@ import subprocess
 
 from flask import Flask, abort, redirect, render_template, request
 
+
 # app configuration
 APP_ROOT = os.path.dirname(os.path.realpath(__file__))
 MEDIA_ROOT = os.path.join(APP_ROOT, 'static')
@@ -29,22 +30,25 @@ def printer():
     
     url = request.args.get('url')
     if url and "geo.admin.ch" in url:
+        
         url_hash = hashlib.md5(url).hexdigest()
-        filename = 'bookmark-%s.png' % url_hash
+        filename = 'map-%s.jpeg' % url_hash
         
         outfile = os.path.join(MEDIA_ROOT, 'downloads',filename)
-        params = [PHANTOM, SCRIPT, url, outfile]
-
-        exitcode = subprocess.call(params)
-        if exitcode == 0:
-            image = os.path.join(MEDIA_URL, 'downloads',filename)
+        image = os.path.join(MEDIA_URL, 'downloads',filename)
+        
+        if os.path.exists(outfile):
             return redirect(image)
+        else:
+               
+            params = [PHANTOM, SCRIPT, url, outfile]
+
+            exitcode = subprocess.call(params)
+            if exitcode == 0:
+                return redirect(image)
             
     abort(404)
 
 if __name__ == '__main__':
-    # create the bookmark table if it does not exist
-    
-
     # run the application
     app.run()
