@@ -9,7 +9,7 @@ from flask import Flask, abort, redirect, render_template, request
 APP_ROOT = os.path.dirname(os.path.realpath(__file__))
 MEDIA_ROOT = os.path.join(APP_ROOT, 'static')
 MEDIA_URL = '/static/'
-PHANTOM = '/usr/bin/phantomjs'
+PHANTOM = 'phantomjs'
 SCRIPT = os.path.join(APP_ROOT, 'screenshot.js')
 
 # create our flask app and a database wrapper
