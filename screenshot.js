@@ -21,7 +21,7 @@ if (system.args.length < 3 || system.args.length > 5) {
 // clipping parameter to remove map.geo.adminc
 left = 300;
 top = 150;
-bottom = 24;
+bottom = 24 + 24;
 
 width = clip_width + left;
 height = clip_height + top + bottom;
