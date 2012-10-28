@@ -1,26 +1,34 @@
 <!doctype html>
-<title>Flaskr</title>
+<title>GeoAdmin Print</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
 <div class=page>
-  <h1>Flaskr</h1>
+  <h1>GeoAdmin Print</h1>
   <div class=metanav>
-
   
 <fieldset>
- <legend> Printing GeoAdmin: </legend>
+ <legend> Paste a GeoAdmin permalink in the following field: </legend>
   <form action="/print" method=get>
- <label for="oui" class="inline">url:</label>
-     
-      <input type=text name=url size=500  value="http://s.geo.admin.ch/27498582">
+  
+      <input type=text name=url size=200  value="http://s.geo.admin.ch/27498582">
       <input type=submit value=Print>
     </fieldset>
        
   </form>
   
-  or use it as a cheap static map
-  <pre> &lt;img src=&quot;http://radiant-taiga-3006.herokuapp.com/print?url=http%3A%2F%2Fs.geo.admin.ch%2F8924fbbc&quot; /&gt;</pre>
-  <img src="http://radiant-taiga-3006.herokuapp.com/print?url=http%3A%2F%2Fs.geo.admin.ch%2F8924fbbc" />
+  <p>The same with a callback:<br />
+  <a href="/print?url=http%3A%2F%2Fs.geo.admin.ch%2F8924fbbc&cb=toto">{{ request.url }}print?url=http%3A%2F%2Fs.geo.admin.ch%2F8924fbbc&amp;cb=callback</a>
   
+  <p>or use it as a cheap static map
+  <pre> &lt;img src=&quot;{{ request.url }}print?url=http%3A%2F%2Fs.geo.admin.ch%2F8924fbbc&quot; /&gt;</pre>
+  <img src="/print?url=http%3A%2F%2Fs.geo.admin.ch%2F8924fbbc&w=450&h=250" />
+  
+  <p>
+  <pre>&lt;img src=&quot;/print?url=http%3A%2F%2Fs.geo.admin.ch%2Feaeda09b&amp;w=450&amp;h=250&quot; /&gt;</pre>
+
+  <img src="/print?url=http%3A%2F%2Fs.geo.admin.ch%2Feaeda09b&w=450&h=250" />
+  
+  
+ 
 </div>
 
 
